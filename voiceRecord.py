@@ -10,6 +10,7 @@ import numpy as np
 FORMAT = pyaudio.paInt16  # 16-bit resolution
 CHANNELS = 1              # Mono audio
 RATE = 44100              # Sample rate (44.1 kHz)
+LOWER_RATE = 35280        # Lower saple rate will lower picth by 20%
 CHUNK = 1024              # Frames per buffer
 RECORD_SECONDS = 5
 OUTPUT_FILENAME = "output.wav"
@@ -29,11 +30,7 @@ def record_audio():
     # Capture data in chunks
     for i in range(0, int(RATE / CHUNK * RECORD_SECONDS)):
         data = stream.read(CHUNK)
-        da = np.frombuffer(data,dtype=np.int16)
-        daFourier = np.fft.rfft(da)
-        frequencies = np.fft.fftfreq(len(da),1/RATE)
         frames.append(data)
-        print(frequencies)
 
     print("Finished recording.")
 
@@ -46,7 +43,7 @@ def record_audio():
     waveFile = wave.open(OUTPUT_FILENAME, 'wb')
     waveFile.setnchannels(CHANNELS)
     waveFile.setsampwidth(audio.get_sample_size(FORMAT))
-    waveFile.setframerate(RATE)
+    waveFile.setframerate(LOWER_RATE)
     waveFile.writeframes(b''.join(frames))
     waveFile.close()
 
