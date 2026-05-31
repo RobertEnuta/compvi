@@ -2,9 +2,7 @@
 import pyaudio
 import wave
 import numpy as np
-
-# print("Seconds to record:")
-# timer = int(input())
+import datetime
 
 # Recording parameters
 FORMAT = pyaudio.paInt16  # 16-bit resolution
@@ -16,6 +14,7 @@ RECORD_SECONDS = 5
 OUTPUT_FILENAME = "output.wav"
 
 def record_audio():
+    print(f"audio starts: {datetime.datetime.now()}")
     # Initialize PyAudio
     audio = pyaudio.PyAudio()
 

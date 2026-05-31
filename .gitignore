@@ -1,3 +1,4 @@
+.env
 test.py
 eyegaze.json
 gaze_model.pkl
@@ -6,3 +7,5 @@ logs/
 *.md
 .cache
 __pycache__
+docker-compose.yml
+output.wav

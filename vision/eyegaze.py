@@ -1,7 +1,7 @@
 import json
 from eyetrax import GazeEstimator, run_9_point_calibration
 import cv2
-
+import datetime 
 RECORD_SECONDS = 2
 RATE = 44100              # Sample rate (44.1 kHz)
 CHUNK = 1024              # Frames per buffer
@@ -16,6 +16,8 @@ def create_model():
     estimator.save_model("gaze_model.pkl")
     return
 def run_tracker():
+    t = datetime.datetime.now()
+    print(t)
     # Load model
     estimator = GazeEstimator()
     estimator.load_model("gaze_model.pkl")
@@ -37,13 +39,15 @@ def run_tracker():
                 "y":f"{y:.0f}"
             }
             LIST_POSITIONS.append(position_dict)
-            print(f"Gaze: ({x:.0f}, {y:.0f})")
+            # print(f"Gaze: ({x:.0f}, {y:.0f})")
             if x < -20 or y < -20 or x > 2000 or y > 2000:
                 print("Out of bonds")
     # dump the list to a json file
     with open("eyegaze.json", "w") as f:
         json.dump(LIST_POSITIONS, f)
+    t = datetime.datetime.now()
+    print(f"end time: {t}")
 
 
-if __name__ == '__main__':
-    run_tracker()
+# if __name__ == '__main__':
+#     run_tracker()
