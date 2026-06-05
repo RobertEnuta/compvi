@@ -14,7 +14,6 @@ RECORD_SECONDS = 5
 OUTPUT_FILENAME = "output.wav"
 
 def record_audio():
-    print(f"audio starts: {datetime.datetime.now()}")
     # Initialize PyAudio
     audio = pyaudio.PyAudio()
 

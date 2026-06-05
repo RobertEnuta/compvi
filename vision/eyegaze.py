@@ -16,8 +16,6 @@ def create_model():
     estimator.save_model("gaze_model.pkl")
     return
 def run_tracker():
-    t = datetime.datetime.now()
-    print(t)
     # Load model
     estimator = GazeEstimator()
     estimator.load_model("gaze_model.pkl")
@@ -33,21 +31,21 @@ def run_tracker():
         # Predict screen coordinates
         if features is not None and not blink:
             x, y = estimator.predict([features])[0]
+            bounds = "in"
+            if x < -20 or y < -20 or x > 2000 or y > 2000:
+                bounds = "out"
+                print("Out of bonds")
             # add positions to the list
             position_dict={
                 "x":f"{x:.0f}",
-                "y":f"{y:.0f}"
+                "y":f"{y:.0f}",
+                "bounds":f"{bounds}"
             }
             LIST_POSITIONS.append(position_dict)
-            # print(f"Gaze: ({x:.0f}, {y:.0f})")
-            if x < -20 or y < -20 or x > 2000 or y > 2000:
-                print("Out of bonds")
+            print(f"Gaze: ({x:.0f}, {y:.0f}, Bounds:{bounds})")
     # dump the list to a json file
     with open("eyegaze.json", "w") as f:
         json.dump(LIST_POSITIONS, f)
-    t = datetime.datetime.now()
-    print(f"end time: {t}")
 
-
-# if __name__ == '__main__':
-#     run_tracker()
+if __name__ == '__main__':
+    create_model()
