@@ -1,8 +1,9 @@
+from datetime import datetime
 import json
 from eyetrax import GazeEstimator, run_9_point_calibration
 import cv2
 import time
-RECORD_SECONDS = 5
+RECORD_SECONDS = 1
 LIST_POSITIONS =[]
 
 def create_model(): 
@@ -52,10 +53,20 @@ def run_tracker():
     # dump the list to a json file
     time_Recorded=time.time() - start # calculate the REAL time it took to record
     # transform the data into json format
-    jdata= {
-        "data":LIST_POSITIONS,
+    d = datetime.now()
+    d = str(d.strftime("%d/%m/%Y, %H:%M:%S"))
+    print(d)
+    meta = {
+        "date":d,
+    }
+    data= {
+        "positions":LIST_POSITIONS,
         "time_onscree":time_on,
         "recorded_time":time_Recorded
+    }
+    jdata= {
+        "meta":meta,
+        "data":data
     }
     # dump data to file
     with open("eyegaze.json", "w") as f:
