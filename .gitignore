@@ -9,3 +9,5 @@ logs/
 __pycache__
 docker-compose.yml
 output.wav
+vision/ai.json
+vision/testeyegaze.json
