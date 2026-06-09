@@ -9,6 +9,8 @@ import datetime
 from models import apiGateway as AI
 
 def model_check():
+    """ Checks and creates gaze_model.pkl
+    """
     t = datetime.datetime.now()
     print(f"app: {t}")
     for dirpath,dirname,files in os.walk('.'):

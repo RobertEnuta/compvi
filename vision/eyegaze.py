@@ -16,7 +16,13 @@ def create_model():
     return
 
 # skip creating a model every time and just run the data logging
-def run_tracker():
+def run_tracker() -> None:
+    """ If gaze_model.pkl exists uses it to track the eye movement of the user and dumps the data to 2 JSON files.\n
+    = eyegaze.json - contains all data and is stored in the DB \n
+    = ai.json - contains only total time and time spent on screen. \n
+    This makes use of https://github.com/ck-zhang/EyeTrax. \n 
+    Zhang, C. (2025). EyeTrax (0.2.2) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.17188537
+    """
     # Load model
     estimator = GazeEstimator()
     estimator.load_model("gaze_model.pkl")

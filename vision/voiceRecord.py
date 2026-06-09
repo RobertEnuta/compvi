@@ -14,6 +14,8 @@ RECORD_SECONDS = 5
 OUTPUT_FILENAME = "collected\\output.wav"
 
 def record_audio():
+    """Records the audio from the user and create an 'output.wav' file.
+    """
     # Initialize PyAudio
     audio = pyaudio.PyAudio()
 
