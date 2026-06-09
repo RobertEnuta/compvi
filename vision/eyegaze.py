@@ -3,7 +3,7 @@ import json
 from eyetrax import GazeEstimator, run_9_point_calibration
 import cv2
 import time
-RECORD_SECONDS = 1
+RECORD_SECONDS = 5
 LIST_POSITIONS =[]
 
 def create_model(): 
@@ -69,7 +69,7 @@ def run_tracker():
         "data":data
     }
     # dump data to file
-    with open("eyegaze.json", "w") as f:
+    with open("..\\collected\\eyegaze.json", "w") as f:
         json.dump(jdata, f)
     # folowing code records ONLY data that is sent to the AI mdoel
     ai_data= {
@@ -77,7 +77,7 @@ def run_tracker():
         "recorded_time":time_Recorded
     }
     # dump data to file
-    with open("ai.json", "w") as f:
+    with open("..\\collected\\ai.json", "w") as f:
         json.dump(ai_data, f)
 
 if __name__ == '__main__':

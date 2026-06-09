@@ -11,3 +11,5 @@ docker-compose.yml
 output.wav
 vision/ai.json
 vision/testeyegaze.json
+collected
+.vscode

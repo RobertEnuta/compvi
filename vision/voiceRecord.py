@@ -11,7 +11,7 @@ RATE = 44100              # Sample rate (44.1 kHz)
 LOWER_RATE = 35280        # Lower saple rate will lower picth by 20%
 CHUNK = 1024              # Frames per buffer
 RECORD_SECONDS = 5
-OUTPUT_FILENAME = "output.wav"
+OUTPUT_FILENAME = "collected\\output.wav"
 
 def record_audio():
     # Initialize PyAudio
