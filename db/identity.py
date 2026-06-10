@@ -4,7 +4,7 @@ import os
 from uuid import uuid4
     
 
-def create_token():
+def use_token():
     """Creates a new UUID token if one doesnt already exist in token.txt"""
     t = rand_token = uuid4()
     try:
