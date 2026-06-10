@@ -1,7 +1,6 @@
 import asyncio
 import os
-# import sys
-# sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from vision.identity import use_token
 from vision import eyegaze as eye
 from vision import voiceRecord as voice
 from multiprocessing import Process
@@ -20,6 +19,9 @@ def model_check():
     eye.create_model()
 
 if __name__ == '__main__':
+    #check first if a token needs to be created
+    if os.stat(".\\collected\\token.txt").st_size != 0:
+        use_token()
     model_check()
     p2 = Process(target=eye.run_tracker)
     p2.start()
@@ -28,7 +30,6 @@ if __name__ == '__main__':
     p2.join()
     p1.join()
     # wait for recording to finish before transcribing
-    script =""
-    asyncio.run(script = AI.transcription()) 
+    script = asyncio.run(AI.transcription()) 
     asyncio.run(AI.get_feedback(script))
     
