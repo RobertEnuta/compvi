@@ -1,3 +1,5 @@
+"""Module that uses the eyegaze tracker
+"""
 from datetime import datetime
 import json
 from eyetrax import GazeEstimator, run_9_point_calibration
