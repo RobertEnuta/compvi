@@ -13,3 +13,4 @@ vision/ai.json
 vision/testeyegaze.json
 collected
 .vscode
+.vscode/settings.json
