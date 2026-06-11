@@ -1,6 +1,6 @@
 # CRUD FOR DB
 import pymongo
-import dbConnection as conn
+import DBC as conn
 
 DB_NAME="database"
 
@@ -31,12 +31,3 @@ def del_db(name=DB_NAME):
         client.drop_database(name)
         print(f"Deleted {name}")
         return
-
-
-# if __name__== '__main__':
-#     create_db()
-#     create_db("db2")
-#     create_db("db3")
-#     print(check_client().list_database_names())
-#     del_db("db3")
-#     print(check_client().list_database_names())
