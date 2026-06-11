@@ -43,7 +43,7 @@ async def get_feedback(input="i love eat apple.",length=300,tokens=180):
     feedback = client.chat.completions.create(
     model="google/gemini-3.1-flash-lite-preview",
     messages=[
-        {"role": "system", "content": f"You are a writing teacher for a 1st grade child.Give a very short feedback on this sentence, no more than {length} characters. Be positive and encouraging"},
+        {"role": "system", "content": f"You are a writing teacher for a 1st grade child.Give short feedback on this sentence, less than {length} characters. Be positive and encouraging"},
         {"role": "user", "content": input}
     ],
     max_completion_tokens=tokens
