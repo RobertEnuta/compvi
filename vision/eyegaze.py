@@ -77,7 +77,7 @@ def run_tracker() -> None:
         "data":data
     }
     # dump data to file
-    with open("..\\collected\\eyegaze.json", "w") as f:
+    with open(".\\collected\\eyegaze.json", "w") as f:
         json.dump(jdata, f)
     # folowing code records ONLY data that is sent to the AI mdoel
     ai_data= {
@@ -85,8 +85,9 @@ def run_tracker() -> None:
         "recorded_time":time_Recorded
     }
     # dump data to file
-    with open("..\\collected\\ai.json", "w") as f:
+    with open(".\\collected\\ai.json", "w") as f:
         json.dump(ai_data, f)
 
 if __name__ == '__main__':
-    create_model()
+    # create_model()
+    run_tracker()

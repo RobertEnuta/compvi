@@ -29,7 +29,8 @@ if __name__ == '__main__':
     p1.start()
     p2.join()
     p1.join()
-    # wait for recording to finish before transcribing
-    script = asyncio.run(AI.transcription()) 
-    asyncio.run(AI.get_feedback(script))
+    # # wait for recording to finish before transcribing
+    # script = asyncio.run(AI.transcription()) 
+    # asyncio.run(AI.get_feedback(script))
+
     

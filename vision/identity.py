@@ -27,5 +27,5 @@ def create_file(t):
     return
 
 if __name__ == '__main__':
-    create_token()
+    use_token()
 

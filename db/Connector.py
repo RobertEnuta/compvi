@@ -1,3 +1,4 @@
+import json
 import colCRUD as col
 import dbCRUD as db
 import Class as dbc
@@ -22,10 +23,19 @@ def add_prog(prog:dbc.Progress,training:dbc.Training):
     return 
 
 if __name__== '__main__':
-    dummy1 = create_user("1a50c7ab-1179-4856-900e-c0b69d730f80")
-    print(dummy1)
-    print(dummy1.UUID)
-    print(dummy1.name)
-    print(dummy1.creation)
-    
+    with open(".\\collected\\token.txt", "r") as f:
+        UUID = f.read()
+    requesting =[]
+    with open(".\\collected\\feedback.json", "r") as fb:
+        for jsonObj in fb:
+            myDict = json.loads(jsonObj)
+            # requesting.append(InsertOne(myDict))
+            print(myDict)
+        
+    # dummy1 = create_user(UUID)
+    # print(dummy1)
+    # print(dummy1.UUID)
+    # print(dummy1.name)
+    # print(dummy1.creation)
+
 
