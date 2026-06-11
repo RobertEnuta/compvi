@@ -12,13 +12,13 @@ def use_token():
             if os.stat(".\\collected\\token.txt").st_size != 0:
                 print("token already exists")
                 print(f.read())
-                return
+                return str(t)
             else:
                 create_file(t)
-                return
+                return str(t)
     except FileNotFoundError:
         create_file(t)
-    return
+    return str(t)
 
 def create_file(t):
     with open(".\\collected\\token.txt", "w") as f:
