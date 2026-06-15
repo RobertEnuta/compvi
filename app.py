@@ -7,7 +7,7 @@ from vision import voiceRecord as voice
 from multiprocessing import Process
 import datetime
 from models import apiGateway as AI
-import db.Connector as conn
+import requests
 
 def model_check():
     """ Checks and creates gaze_model.pkl
@@ -22,30 +22,43 @@ def model_check():
 
 if __name__ == '__main__':
     # check first if a token needs to be created
-    if os.stat(".\\collected\\token.txt").st_size != 0:
-       token = use_token()
-    model_check()
-    p2 = Process(target=eye.run_tracker)
-    p2.start()
-    p1 = Process(target=voice.record_audio)
-    p1.start()
-    p2.join()
-    p1.join()
-    # wait for recording to finish before transcribing
-    script = asyncio.run(AI.transcription()) 
-    asyncio.run(AI.get_feedback(script))
+    token = use_token()
+    # model_check()
+    # p2 = Process(target=eye.run_tracker)
+    # p2.start()
+    # p1 = Process(target=voice.record_audio)
+    # p1.start()
+    # p2.join()
+    # p1.join()
+    # # wait for recording to finish before transcribing
+    # script = asyncio.run(AI.transcription()) 
+    # asyncio.run(AI.get_feedback(script))
 
-    with open(".\\collected\\token.txt", "r") as f:
-        UUID = f.read()
-    with open(".\\collected\\ai.json", "r") as f:
-        e = json.load(f)
-    with open(".\\collected\\feedback.json", "r") as f:
-        feedback = json.load(f)
-    feedback = feedback["choices"][0]["message"]["content"]
+    # with open(".\\collected\\token.txt", "r") as f:
+    #     UUID = f.read()
+    # with open(".\\collected\\ai.json", "r") as f:
+    #     e = json.load(f)
+    # with open(".\\collected\\feedback.json", "r") as f:
+    #     feedback = json.load(f)
+    # feedback = feedback["choices"][0]["message"]["content"]
 
-    conn.create_user(UUID,"rob")
-    conn.create_training(UUID,e,feedback)
 
-    print(conn.read_prog())
+    # url = "http://127.0.0.1:5000/training"
 
-    
+    # headers = {
+    #     "Authorization": UUID
+    # }
+
+    # # query parameters (?UUID=TESTED2&fb=Test)
+    # params = {
+    #     "UUID": UUID,
+    #     "fb": feedback
+    # }
+
+    # # JSON body (your "json file")
+    # json_data = e
+
+    # response = requests.post(url, params=params, json=json_data)
+
+    # print(response.status_code)
+     
