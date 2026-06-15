@@ -1,5 +1,5 @@
 from typing import Collection
-from db import dbCRUD as DB
+import dbCRUD as DB
 
 DB_NAME="database"
 

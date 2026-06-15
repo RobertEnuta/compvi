@@ -1,6 +1,6 @@
 # CRUD FOR DB
 import pymongo
-from db import DBC as conn
+import DBC as conn
 
 DB_NAME="database"
 

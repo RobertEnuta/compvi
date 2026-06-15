@@ -4,10 +4,12 @@ from datetime import datetime
 
 class User(dict):
     """Creates the user with the unique UUID and current date"""
-    def __init__(self,UUID:str,name:str):
+    def __init__(self,UUID:str,name:str,password:str,admin=False):
         super().__init__()
         self["_id"] = UUID
         self["name"] = name 
+        self["password"] = password 
+        self["admin"] = admin 
         self["creation"] = datetime.now().strftime("%d-%m-%y") 
 
 class Training(dict):
