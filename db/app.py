@@ -140,5 +140,5 @@ def del_acc(current_user):
 
 
 if __name__ == '__main__':
-    app.run(port=80085)
+    app.run(debug=True,port=500)
     # app.run()
