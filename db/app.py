@@ -11,16 +11,16 @@ app = Flask(__name__)
 app.config["SECRET_KEY"] = os.getenv("APP_KEY")
 
 # UNCOMMENT FOR TESTING 
-# @app.route('/')
-# def hello_world():
-#     t = []
-#     print(conn.read_users())
-#     for u in conn.read_users():
-#         # print(conn.del_user(u["name"],u["password"]))
-#         u.pop("_id")
-#         u.pop("password")
-#         t.append(u) 
-#     return t
+@app.route('/')
+def hello_world():
+    t = []
+    print(conn.read_users())
+    for u in conn.read_users():
+        # print(conn.del_user(u["name"],u["password"]))
+        u.pop("_id")
+        u.pop("password")
+        t.append(u) 
+    return t
 
 @app.route("/register", methods=["POST"])
 def register():
@@ -140,5 +140,5 @@ def del_acc(current_user):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port=80085)
     # app.run()

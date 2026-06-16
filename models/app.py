@@ -18,10 +18,8 @@ def transcript():
     if file:
         filename = file.filename
         file.save(f"./{filename}")
-        print (model.transcription("./output.wav"))
 
-
-    return filename #model.transcription(t)
+    return (model.transcription(filename))
 
 
 @app.route("/",methods=["GET"])
@@ -33,4 +31,4 @@ def home():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port=80084)

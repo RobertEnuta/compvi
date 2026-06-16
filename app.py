@@ -22,17 +22,17 @@ def model_check():
 
 if __name__ == '__main__':
     # check first if a token needs to be created
-    # token = use_token()
-    # model_check()
-    # p2 = Process(target=eye.run_tracker)
-    # p2.start()
-    # p1 = Process(target=voice.record_audio)
-    # p1.start()
-    # p2.join()
-    # p1.join()
+    token = use_token()
+    model_check()
+    p2 = Process(target=eye.run_tracker)
+    p2.start()
+    p1 = Process(target=voice.record_audio)
+    p1.start()
+    p2.join()
+    p1.join()
     # # wait for recording to finish before transcribing
-    script = asyncio.run(AI.transcription()) 
-    print(script)
+    # script = asyncio.run(AI.transcription()) 
+    # print(script)
     # asyncio.run(AI.get_feedback(script))
 
     # with open(".\\collected\\token.txt", "r") as f:
@@ -63,9 +63,6 @@ if __name__ == '__main__':
 
     # print(response.status_code)
 
-    # Source - https://stackoverflow.com/q/58513718
-# Posted by Kaushik Andra
-# Retrieved 2026-06-16, License - CC BY-SA 4.0
 
 # def send_audio():
 #print('attempting to send audio')

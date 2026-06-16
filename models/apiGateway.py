@@ -19,7 +19,7 @@ async def transcription(file="output.wav",language="en",format="json") -> str:
         provider = "azure-openai" 
     )
 
-    audio_file = open(f".\\collected\\{file}", "rb")
+    audio_file = open(f".\\{file}", "rb")
     transcript = client.audio.transcriptions.create(
         model="whisper",
         file=audio_file,
@@ -49,11 +49,12 @@ async def get_feedback(input="i love eat apple.",length=300,tokens=180):
     max_completion_tokens=tokens
     )
 
-    print(feedback.choices[0].message.content)
-    with open(".\\collected\\feedback.json", "w") as f:
+    feed = feedback.choices[0].message.content
+    print(feed)
+    with open(".\\feedback.json", "w") as f:
         f.write(str(feedback))
 
-    return feedback
+    return feed
 
 if __name__ == "__main__":
     asyncio.run(get_feedback())
