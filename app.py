@@ -22,7 +22,7 @@ def model_check():
 
 if __name__ == '__main__':
     # check first if a token needs to be created
-    token = use_token()
+    # token = use_token()
     # model_check()
     # p2 = Process(target=eye.run_tracker)
     # p2.start()
@@ -31,7 +31,8 @@ if __name__ == '__main__':
     # p2.join()
     # p1.join()
     # # wait for recording to finish before transcribing
-    # script = asyncio.run(AI.transcription()) 
+    script = asyncio.run(AI.transcription()) 
+    print(script)
     # asyncio.run(AI.get_feedback(script))
 
     # with open(".\\collected\\token.txt", "r") as f:
@@ -61,4 +62,25 @@ if __name__ == '__main__':
     # response = requests.post(url, params=params, json=json_data)
 
     # print(response.status_code)
+
+    # Source - https://stackoverflow.com/q/58513718
+# Posted by Kaushik Andra
+# Retrieved 2026-06-16, License - CC BY-SA 4.0
+
+# def send_audio():
+#print('attempting to send audio')
+    # url2 = 'http://127.0.0.1:5000/'
+    # req = requests.get(url2)
+    # print(req.status_code)
+    # print(req.text)
+
+    # url = 'http://127.0.0.1:5000/transcript'
+    # with open('./collected/output.wav', 'rb') as file:
+    #     data = {'uuid':'-jx-1', 'alarmType':1, 'timeDuration':10}
+    #     files = {'file': file}
+
+    #     req = requests.post(url, files=files, json=data)
+    #     print(req.status_code)
+    #     print(req.text)
+
      
